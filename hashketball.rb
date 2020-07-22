@@ -141,11 +141,12 @@ def get_team_players_names(team)
   team_players_names = []
   game_hash[team][:players].count.times do |index|
     current_player = game_hash[team][:players][index][:player_name]
-    
+    team_players_names.push(current_player)
   end
-  
-  
+  team_players_names
 end
+
+binding.pry
 
 def player_stats(player_name) #=> get one players full stats
   game_hash.each do |location, team_data| #=> location = home or away, team_data = team hash
