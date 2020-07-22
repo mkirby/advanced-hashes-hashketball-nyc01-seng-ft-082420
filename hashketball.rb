@@ -175,7 +175,20 @@ def player_stats(player_name)
   end
 end
 
+def get_player_names
+  all_player_names = []
+  game_hash.each do |location, team_data| #=> location = home or away, team_data = team hash
+    team_data[:players].count.times do |index| #=> loop over players
+      all_player_names.push(team_data[:players][index][:player_name])
+    end
+  end
+  all_player_names
+end
+
+get_player_names
+
 def big_shoe_rebounds
+  biggest_shoe = nil #=> store biggest shoe to compare to other values
   
 end
 
