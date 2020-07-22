@@ -127,7 +127,7 @@ def game_hash
   }
 end
 
-def get_player_names
+def get_all_player_names #=> get all players names from both teams
   all_player_names = []
   game_hash.each do |location, team_data| #=> location = home or away, team_data = team hash
     team_data[:players].count.times do |index| #=> loop over players
@@ -137,20 +137,28 @@ def get_player_names
   all_player_names
 end
 
+def player_stats(player_name) #=> get one players full stats
+  game_hash.each do |location, team_data| #=> location = home or away, team_data = team hash
+    team_data[:players].count.times do |index| #=> loop over players
+      current_player = team_data[:players][index][:player_name]
+      if current_player == player_name
+        return team_data[:players][index]
+      end
+    end
+  end
+end
+
 def get_player_stat(player_name, data_type)
   player_stats(player_name)[data_type]
 end
 
 def get_player_with_biggest_stat(stat)
-  
   biggest_stat = nil
   player_with_biggest_stat = nil
-  
-  all_player_names = get_player_names
-  
+  all_player_names = get_all_player_names
   all_player_names.count.times do |index|
     current_stat = get_player_stat(all_player_names[index], stat)
-    if !biggest_shoe || current_stat > biggest_stat
+    if !biggest_stat || current_stat > biggest_stat
       biggest_stat = current_stat
       player_with_biggest_stat = all_player_names[index]
     end
@@ -191,34 +199,17 @@ def player_numbers(team_name)
   team_player_numbers
 end
 
-def player_stats(player_name)
-  game_hash.each do |location, team_data| #=> location = home or away, team_data = team hash
-    team_data[:players].count.times do |index| #=> loop over players
-      current_player = team_data[:players][index][:player_name]
-      if current_player == player_name
-        return team_data[:players][index]
-      end
-    end
-  end
-end
-
 def big_shoe_rebounds
-=begin
-  biggest_shoe = nil #=> store biggest shoe to compare to other values
-  player_with_biggest_shoe = nil
-  all_player_names = get_player_names
-  all_player_names.count.times do |index|
-    current_shoe = get_player_stat(all_player_names[index], :shoe)
-    if !biggest_shoe || current_shoe > biggest_shoe
-      biggest_shoe = current_shoe
-      player_with_biggest_shoe = all_player_names[index]
-    end
-  end
-=end
   get_player_stat(get_player_with_biggest_stat(:shoe), :rebounds)
 end
 
+def most_points_scored
+  get_player_with biggest_stat(:points)
+end
 
+def winning_team
+  
+end
 
 
 
