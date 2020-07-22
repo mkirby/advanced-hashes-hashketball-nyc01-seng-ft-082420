@@ -128,23 +128,14 @@ def game_hash
 end
 
 def num_points_scored(player_name)
-  
   game_hash.each do |location, team_data| #=> location = home or away, team_data = team hash
-    
     team_data[:players].count.times do |index| #=> loop over players
-      
-      if team_data[:players][index][:player_name] == player_name
+      current_player = team_data[:players][index][:player_name]
+      if current_player == player_name
         return team_data[:players][index][:points]
       end
-      
-      
     end
-    
   end
-  
-  
-  
-  
 end
   
   
