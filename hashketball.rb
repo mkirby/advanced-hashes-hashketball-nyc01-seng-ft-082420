@@ -212,11 +212,18 @@ def winning_team
 end
 
 def player_with_longest_name
-  get_player_with_biggest_stat(:player_name)
+  longest_name = nil
+  all_player_names = get_all_player_names
+  all_player_names.count.times do |index|
+    current_player_name = all_player_names[index]
+    if !longest_name || current_player_name.length > longest_name.length
+      longest_name = current_player_name
+    end
+  end
+  longest_name
 end
 
 binding.pry
-
 
 
 
