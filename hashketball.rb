@@ -127,7 +127,7 @@ def game_hash
   }
 end
 
-def get_player_data(player_name, data_type)
+def get_player_stat(player_name, data_type)
   game_hash.each do |location, team_data| #=> location = home or away, team_data = team hash
   
     team_data[:players].count.times do |index| #=> loop over players
@@ -143,11 +143,11 @@ def get_player_data(player_name, data_type)
 end
 
 def num_points_scored(player_name)
-  get_player_data(player_name, :points)
+  get_player_stat(player_name, :points)
 end
 
 def shoe_size(player_name)
-  get_player_data(player_name, :shoe)
+  get_player_stat(player_name, :shoe)
 end
 
 def team_colors(team_name)
@@ -175,8 +175,19 @@ def player_numbers(team_name)
   team_player_numbers
 end
 
-def player_stats
+def player_stats(player_name)
+  game_hash.each do |location, team_data| #=> location = home or away, team_data = team hash
   
+    team_data[:players].count.times do |index| #=> loop over players
+    
+      current_player = team_data[:players][index][:player_name]
+      
+      if current_player == player_name
+        return team_data[:players][index]
+      end
+      
+    end
+  end
 end
 
 
