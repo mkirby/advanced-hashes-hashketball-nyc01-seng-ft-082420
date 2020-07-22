@@ -159,6 +159,34 @@ def team_colors(team_name)
 end
 
 def team_names
-  
+  teams = [game_hash[:away][:team_name], game_hash[:away][:team_name]]
+  teams
 end
+
+def player_numbers(team_name)
+  team_player_numbers = []
+  game_hash.each do |location, team_data|
+    if team_data[:team_name] == team_name
+      team_data[:players].count.times do |index|
+        team_player_numbers.push(team_data[:players][index][:number])
+      end
+    end
+  end
+  team_player_numbers
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
