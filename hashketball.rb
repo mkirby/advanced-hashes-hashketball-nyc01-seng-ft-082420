@@ -216,6 +216,11 @@ def most_points_scored
   get_player_with biggest_stat(:points)
 end
 
+def get_team_score(team)
+  score = 0
+  
+end
+
 def winning_team
   score_total_home_team = 0
   home_team_players_names = get_team_players_names(:home)
@@ -224,10 +229,11 @@ def winning_team
     score_total_home_team += get_player_stat(current_player, :points)
   end
   
-  binding.pry
-  
   score_total_away_team = 0
-  away_team_players_names = get_team_players_names(:home)
+  away_team_players_names = get_team_players_names(:away)
+  away_team_players_names.count.times do |index|
+    current_player = away_team_players_names[index]
+    score_total_away_team += get_player_stat(current_player, :points)
 end
 
 def player_with_longest_name
