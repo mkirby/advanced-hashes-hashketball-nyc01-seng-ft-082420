@@ -185,11 +185,17 @@ def get_player_names
   all_player_names
 end
 
-get_player_names
-
 def big_shoe_rebounds
   biggest_shoe = nil #=> store biggest shoe to compare to other values
-  
+  player_with_biggest_shoe = nil
+  all_player_names = get_player_names
+  all_player_names.count.times do |index|
+    if !biggest_shoe || get_player_stat(all_player_names[index], :shoe) > biggest_shoe
+      biggest_shoe = get_player_stat(all_player_names[index], :shoe)
+      player_with_biggest_shoe = all_player_names[index]
+    end
+  end
+  get_player_stat(player_with_biggest_shoe, :rebounds)
 end
 
 
