@@ -138,6 +138,12 @@ def get_all_player_names #=> get all players names from both teams
 end
 
 def get_team_players_names(team)
+  team_players_names = []
+  game_hash[team][:players].count.times do |index|
+    current_player = game_hash[team][:players][index][:player_name]
+    
+  end
+  
   
 end
 
