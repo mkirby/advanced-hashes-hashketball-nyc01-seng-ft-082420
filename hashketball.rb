@@ -190,8 +190,9 @@ def big_shoe_rebounds
   player_with_biggest_shoe = nil
   all_player_names = get_player_names
   all_player_names.count.times do |index|
-    if !biggest_shoe || get_player_stat(all_player_names[index], :shoe) > biggest_shoe
-      biggest_shoe = get_player_stat(all_player_names[index], :shoe)
+    current_shoe = get_player_stat(all_player_names[index], :shoe)
+    if !biggest_shoe || current_shoe > biggest_shoe
+      biggest_shoe = current_shoe
       player_with_biggest_shoe = all_player_names[index]
     end
   end
