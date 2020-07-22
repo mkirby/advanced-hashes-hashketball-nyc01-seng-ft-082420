@@ -128,19 +128,7 @@ def game_hash
 end
 
 def get_player_stat(player_name, data_type)
-=begin
-  game_hash.each do |location, team_data| #=> location = home or away, team_data = team hash
-    team_data[:players].count.times do |index| #=> loop over players
-      current_player = team_data[:players][index][:player_name]
-      if current_player == player_name
-        return team_data[:players][index][data_type]
-      end
-    end
-  end
-=end
-  player = player_stats(player_name)
-  player[data_type]
-
+  player_stats(player_name)[data_type]
 end
 
 def num_points_scored(player_name)
@@ -187,7 +175,9 @@ def player_stats(player_name)
   end
 end
 
-
+def big_shoe_rebounds
+  
+end
 
 
 
