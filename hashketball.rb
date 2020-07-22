@@ -211,8 +211,11 @@ def winning_team
   
 end
 
+def player_with_longest_name
+  get_player_with_biggest_stat(:player_name)
+end
 
-
+binding.pry
 
 
 
