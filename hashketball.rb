@@ -218,7 +218,11 @@ end
 
 def winning_team
   score_total_home_team = 0
+  home_team_players_names = get_team_players_names(:home)
+  
+  
   score_total_away_team = 0
+  away_team_players_names = get_team_players_names(:home)
 end
 
 def player_with_longest_name
