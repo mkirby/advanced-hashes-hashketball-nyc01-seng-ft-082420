@@ -208,7 +208,8 @@ def most_points_scored
 end
 
 def winning_team
-  
+  score_total_home_team = 0
+  score_total_away_team = 0
 end
 
 def player_with_longest_name
@@ -222,8 +223,6 @@ def player_with_longest_name
   end
   longest_name
 end
-
-binding.pry
 
 
 
