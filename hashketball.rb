@@ -137,7 +137,7 @@ def get_all_player_names #=> get all players names from both teams
   all_player_names
 end
 
-def get_team_players_names(team)
+def get_team_players_names(team) #=> get only play names from one team
   team_players_names = []
   game_hash[team][:players].count.times do |index|
     current_player = game_hash[team][:players][index][:player_name]
@@ -145,8 +145,6 @@ def get_team_players_names(team)
   end
   team_players_names
 end
-
-binding.pry
 
 def player_stats(player_name) #=> get one players full stats
   game_hash.each do |location, team_data| #=> location = home or away, team_data = team hash
