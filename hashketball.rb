@@ -227,7 +227,10 @@ def get_team_score(team)
 end
 
 def winning_team
-  get_team_score(:home) > get_team_score(:away) ? puts "Home Team Wins" : puts "Away Team Wins"
+  home_score = get_team_score(:home)
+  away_score = get_team_score(:away)
+  home_team_wins = home_score > away_score
+  home_team_wins ? "Home Team Wins #{home_score} to #{away_score}" : "Away Team Wins #{away_score} to #{home_score}"
 end
 
 def player_with_longest_name
