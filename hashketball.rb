@@ -230,7 +230,7 @@ def winning_team
   home_score = get_team_score(:home)
   away_score = get_team_score(:away)
   home_team_wins = home_score > away_score
-  home_team_wins ? "Home Team Wins #{home_score} to #{away_score}" : "Away Team Wins #{away_score} to #{home_score}"
+  home_team_wins ? "Home Team Wins! #{home_score} to #{away_score}" : "Away Team Wins! #{away_score} to #{home_score}"
 end
 
 def player_with_longest_name
@@ -243,6 +243,10 @@ def player_with_longest_name
     end
   end
   longest_name
+end
+
+def long_name_steals_a_ton?
+  player_with_longest_name == player_with_biggest_stat(:steals) ? true : false
 end
 
 binding.pry
